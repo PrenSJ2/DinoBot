@@ -68,18 +68,28 @@ const reposCommandCallback = async ({ ack, respond }) => {
       // Fetch open pull requests from GitHub API
       const pull_requests_url = `https://api.github.com/repos/tutorcruncher/${repo_name}/pulls?state=open`;
       const headers = { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` };
-      const pull_requests_response = await axios.get(pull_requests_url, { headers });
-      const pull_requests_count = pull_requests_response.data.length;
+      let pull_requests_count = 0;
+      try {
+        const pull_requests_response = await axios.get(pull_requests_url, { headers });
+        pull_requests_count = pull_requests_response.data.length;
+      } catch (error) {
+        console.error(error);
+      }
 
       // Fetch last release information
       const releases_url = `https://api.github.com/repos/tutorcruncher/${repo_name}/releases`;
-      const releases_response = await axios.get(releases_url, { headers });
-      const releases = releases_response.data;
       let last_release_date = 'No releases found';
-      if (releases.length > 0) {
-        const last_release = releases[0];
-        last_release_date = last_release.published_at.slice(0, 10);
+      try {
+        const releases_response = await axios.get(releases_url, { headers });
+        const releases = releases_response.data;
+        if (releases.length > 0) {
+          const last_release = releases[0];
+          last_release_date = last_release.published_at.slice(0, 10);
+        }
+      } catch (error) {
+        console.error(error);
       }
+
 
       // Format the message for the current repository
       const table = [
