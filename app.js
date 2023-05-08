@@ -16,7 +16,7 @@ registerListeners(app);
 
 (async () => {
   // Start your app
+  console.log("PORT", process.env.PORT);
   await app.start(process.env.PORT || 3000);
-
   console.log('⚡️ DinoBot app is running!');
 })();
