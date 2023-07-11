@@ -1,13 +1,13 @@
 {
-  "name": "bolt-js-template",
+  "name": "DinoBot",
   "version": "1.0.0",
-  "description": "A scaffold template for Slack apps",
+  "description": "All TC slack automations",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "lint": "eslint --ext .js ."
   },
-  "author": "Slack Technologies, LLC",
+  "author": "Sebastian Prentice",
   "license": "MIT",
   "keywords": [
     "slack",
