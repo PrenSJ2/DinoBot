@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@slack/bolt": "^3.8.1",
+    "@slack/oauth": "^2.6.1",
     "dotenv": "^10.0.0",
     "mongoose": "^6.2.7"
   },

@@ -10,7 +10,7 @@ const app = new App({
   stateSecret: 'my-state-secret',
   scopes: ['commands', 'users:read'],
   installationStore: new FileInstallationStore(),
-  socketMode: true,
+  // socketMode: true,
 });
 
 /** Register Listeners */
